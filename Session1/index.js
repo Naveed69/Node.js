@@ -1,42 +1,40 @@
 const http = require("http");
-const PORT = 8089;
-
+const PORT = 8080;
 const server = http.createServer((req, res) => {
   const url = req.url;
   const method = req.method;
-
-  console.log("method and url are:" + method, " : ", url);
-  if (method === "GET") {
+  if (method !== "GET") {
+    res.writeHead(405);
+    res.write("Method Not Allowed..!!");
+  } else {
     if (url === "/") {
-      res.write("Hello Naveed");
-      res.end("Welcome User");
-    } else if (url === "/contact")
-      res.end("9008888569 mail:naveed.desai.69@gmail.com");
-    else {
+      res.write("Hello Naveed server started");
+    }
+
+    if (url === "/contact") {
+      res.write("mob:9008888569 mail:naveed.desai.69@gmail.com");
+    }
+
+    if (url === "/fitness") {
       const fitness = {
         name: "Naveed",
         age: 27,
-        diet: ["eggs", "Chapati"],
+        height: 173,
+        diet: ["3 meals", "eggs", "snacks"],
         address: {
           street: "3rd cross",
+          house: "naveed homes",
           houseNo: 25,
-        },
-        fun: () => {
-          console.log("hello");
         },
       };
       res.writeHead(200, { "content-type": "application/json" });
-      res.end(JSON.stringify(fitness));
+      res.write(JSON.stringify(fitness));
     }
-  } else {
-    res.writeHead(405);
-
-    res.end("Method Not Allowed..");
   }
-
-  console.log(url);
+  console.log("server started to listen");
+  res.end();
 });
 
 server.listen(PORT, () => {
-  console.log("Server has started at the port:", PORT);
+  console.log("Server started to Listed at 8080");
 });
