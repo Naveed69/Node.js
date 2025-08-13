@@ -20,12 +20,30 @@ app.get("/api/v1/user/userdata", (req, res) => {
   res.status(200).json(persons);
 });
 
-//query search
+//search by query
+//in submission of form we don't use query
+
 app.get("/api/v1/user/search", (req, res) => {
   const query = req.query;
   const gender = query.gender;
   const finallist = userData.data.filter((person) => person.gender === gender);
   res.json(finallist);
+});
+
+// search by params
+
+/*search multple params
+app.get("/api/v1/user/:username/:gender", (req, res) => { */
+
+app.get("/api/v1/user/:username", (req, res) => {
+  const param = req.params;
+  const name = param.username;
+  const result = userData.data.filter((user) => name === user.name);
+  const payload = {
+    data: result,
+    count: result.length,
+  };
+  res.json(payload);
 });
 
 app.get("/todos/contact", (req, res) => {
