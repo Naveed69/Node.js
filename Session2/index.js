@@ -1,7 +1,16 @@
 const express = require("express");
-const { homeResponse } = require("./Controllers/HomeController");
+const {
+  homeResponse,
+  contactDetails,
+} = require("./Controllers/HomeController");
 const userData = require("./userData");
+const {
+  alluserData,
+  searchUserByGender,
+  searchUserByName,
+} = require("./Controllers/APIControllers");
 const app = express();
+
 const port = 3000;
 
 app.use(express.json());
@@ -12,39 +21,23 @@ const fitness = {
 };
 app.get("/todos", homeResponse);
 app.get("/", homeResponse);
+app.get("/contact", contactDetails);
 
 //normal api calling
 
-app.get("/api/v1/user/userdata", (req, res) => {
-  const persons = userData.data;
-  res.status(200).json(persons);
-});
+app.get("/api/v1/user/userdata", alluserData);
 
 //search by query
 //in submission of form we don't use query
 
-app.get("/api/v1/user/search", (req, res) => {
-  const query = req.query;
-  const gender = query.gender;
-  const finallist = userData.data.filter((person) => person.gender === gender);
-  res.json(finallist);
-});
+app.get("/api/v1/user/search", searchUserByGender);
 
 // search by params
 
 /*search multple params
 app.get("/api/v1/user/:username/:gender", (req, res) => { */
 
-app.get("/api/v1/user/:username", (req, res) => {
-  const param = req.params;
-  const name = param.username;
-  const result = userData.data.filter((user) => name === user.name);
-  const payload = {
-    data: result,
-    count: result.length,
-  };
-  res.json(payload);
-});
+app.get("/api/v1/user/:username", searchUserByName);
 
 app.get("/todos/contact", (req, res) => {
   res.send("9008888569 mail:naveed.desai@gmail.com");
