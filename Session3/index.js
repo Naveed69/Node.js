@@ -1,15 +1,22 @@
 const express = require("express");
+require("dotenv").config(); // this command will load everything/all the varilale in processs variable
+//above process is globle variable
 const HomeRoutes = require("./Routes/HomeRoutes");
 const ApiRoutes = require("./Routes/ApiRoutes");
 const { authorize } = require("./MiddleWare/Authorization");
 const app = express();
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
 //normal api in index.js not suggested
 //authorize done here also
+
+app.get("/test", (req, res) => {
+  res.send("Hello World");
+});
+
 app.get("/fitness", authorize, (req, res) => {
   const fitness = {
     name: "Naveed",
