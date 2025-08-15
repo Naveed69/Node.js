@@ -4,10 +4,7 @@ const {
   ConvertCurrency,
 } = require("./Controllers/CurrencyConverterController");
 const server = express();
-// server.use(express.json());
 const port = 3000;
-
-//Routes
 server.get("/exchange/currencies", allCurrency);
 
 server.get("/exchange/convert", ConvertCurrency);

@@ -2,7 +2,6 @@ const axios = require("axios");
 const url = "https://open.er-api.com/v6/latest";
 async function ConvertCurrency(req, res) {
   const query = req.query;
-
   if (query.value < 0)
     res.status(400).json({ message: "Incomplete or Incorrect data passed" });
   if (query.currency.length !== 3 || query.to_currency.length !== 3)
