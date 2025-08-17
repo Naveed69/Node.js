@@ -1,4 +1,5 @@
 const express = require("express");
+const { ApiCall } = require("./Controllers/Api_Controller");
 const server = express();
 const port = process.env.PORT || 3000;
 
@@ -8,20 +9,11 @@ server.get("/", (req, res) => {
 });
 
 server.get("/contact", (req, res) => {
-  res.send("Welcome to my site");
+  res.send("Mob:9008888569 mail:naveed@gmail.com");
 });
 
-server.get("/", (req, res) => {
-  res.send("Welcome to my site");
-});
-
-server.get("/", (req, res) => {
-  res.send("Welcome to my site");
-});
-
-server.get("/", (req, res) => {
-  res.send("Welcome to my site");
-});
+// api calling and searching
+server.get("/api/v1/user", ApiCall);
 
 server.listen(port, () => {
   console.log("Server started to listen on port:", port);

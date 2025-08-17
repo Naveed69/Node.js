@@ -1,0 +1,5 @@
+function ApiCall(req, res) {
+  res.send("Welcome to my site api from controll");
+}
+
+module.exports = { ApiCall };
