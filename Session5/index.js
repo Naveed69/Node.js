@@ -1,7 +1,7 @@
 const express = require("express");
 const HomeRouter = require("./Routes/HomeRouter");
 const ApiRouter = require("./Routes/ApiRouter");
-const { ApiGenderSearch } = require("./Controllers/Api_Controller");
+const Authorization = require("./MiddleWare/Authorization");
 const server = express();
 const port = process.env.PORT || 3000;
 
@@ -9,7 +9,18 @@ const port = process.env.PORT || 3000;
 server.use("/", HomeRouter);
 
 // api rout calling and searching
-server.use("/api/v1/user", ApiRouter);
+server.use("/api/v1/user", Authorization, ApiRouter);
+
+//without router we can use authorization
+
+server.get("/fitness", Authorization, (req, res) => {
+  const fitness = {
+    name: "Naveed",
+    age: 27,
+    diet: ["Egg", "Ghee"],
+  };
+  res.status(200).json(fitness);
+});
 
 server.listen(port, () => {
   console.log("Server started to listen on port:", port);
