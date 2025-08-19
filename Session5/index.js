@@ -3,6 +3,7 @@ const HomeRouter = require("./Routes/HomeRouter");
 const ApiRouter = require("./Routes/ApiRouter");
 const Authorization = require("./MiddleWare/Authorization");
 const server = express();
+require("dotenv").config();
 const port = process.env.PORT || 3000;
 
 //home rout calls
