@@ -1,5 +1,20 @@
+const userData = require("../userData");
 function ApiCall(req, res) {
   res.send("Welcome to my site api from controll");
 }
 
-module.exports = { ApiCall };
+function ApiCallAllUsers(req, res) {
+  res.json(userData.data);
+}
+
+function ApiSearchUser(req, res) {
+  // res.send("Hello");
+  const param = req.params;
+  console.log(param.name);
+  const users = userData.data;
+  const user = users.filter((user) => user === param.name);
+  // res.status(203).json(user);
+  res.send(user);
+}
+
+module.exports = { ApiCall, ApiCallAllUsers, ApiSearchUser };
