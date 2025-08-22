@@ -29,10 +29,11 @@ server.get("/fitness", Authorization, (req, res) => {
 });
 
 //DataBase connection mongoose
+
 // dataBaseUrl = mongodb://localhost:27017
 
 const dataBaseUrl = process.env.db_URL + ":" + process.env.db_PORT + "/Node";
-mongoose.connect(dataBaseUrl)
+mongoose.connect(dataBaseUrl);
 
 server.listen(port, () => {
   console.log("Server started to listen on port:", port);
