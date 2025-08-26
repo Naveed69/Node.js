@@ -15,6 +15,7 @@ if (pos === -1) return;
 let task = newArr[pos];
 console.log(task);
 axios.delete(`${config.endpoint}/todos`, { data: task }).then((res) => {
+<!-- axios.put(`${config.endpoint}/todos`, { data: updateTask }).then((res) => { -->
 console.log("In Frontend", res.data);
 });
 newArr.splice(pos, 1);
