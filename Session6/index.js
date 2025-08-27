@@ -1,19 +1,21 @@
 const express = require("express");
+const { default: mongoose } = require("mongoose");
+const HomeRouter = require("./Routes/HomeRoute");
+const UserApiRouter = require("./Routes/UserApiRouter");
+require("dotenv").config();
 const app = express();
-const port = 3000;
+const port = process.env.port || 3000;
+app.use(express.json());
+//Home router
+app.use("/", HomeRouter);
 
-app.get("/", (req, res) => {
-  res.send("Hello node started");
-});
-app.get("/contact", (req, res) => {
-  res.send("mob: 9008888569");
-});
-app.get("/fitness", (req, res) => {
-  res.send("Hello node started");
-});
-app.get("/services", (req, res) => {
-  res.send("Hello node started");
-});
+//User Api Router
+app.use("/api/v1/", UserApiRouter);
+
+//mongoDB connection with mongoose
+mongoose
+  .connect(process.env.db_URL + ":" + process.env.db_PORT + "/Session6")
+  .then(console.log("Mongodb connected"));
 
 app.listen(port, () => {
   console.log("Server started to listen at:", port);
