@@ -1,16 +1,10 @@
 const { user } = require("../Models/userModel");
+const UserAddService = require("../Services/UserAddService");
 
 const addUser = async (req, res) => {
   const { name, age, mobile, branch } = req.body;
-  //   console.log(req.body);
   try {
-    const newuser = user({
-      name,
-      age,
-      mobile,
-      branch,
-    });
-    const response = await newuser.save();
+    const response = await UserAddService.createUser(name, age, mobile, branch);
     res.status(200).json({ message: "User added successfully", response });
   } catch (err) {
     res.status(500).json({ message: err.message });
