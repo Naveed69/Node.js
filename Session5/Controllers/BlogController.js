@@ -2,6 +2,7 @@ const BlogModel = require("../Models/Blog.model");
 
 const createBlog = async (req, res) => {
   const { title, content } = req.body;
+  console.log(req.body);
 
   //object creation
   const blogObj = BlogModel({ title, content });
