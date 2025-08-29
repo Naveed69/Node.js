@@ -1,0 +1,19 @@
+pitfalls
+
+->console.log() add string to it so we should know weher we are running it
+->if we forget await then we get as promise<pending>
+->eaddrin already running somthing in  port you are trying to run server
+lsof -i :8082
+kill -9 processid
+
+
+
+
+
+
+
+
+
+
+
+
