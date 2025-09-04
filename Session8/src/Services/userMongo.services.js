@@ -1,8 +1,8 @@
 const { User } = require("../Model/User.model");
 
 class userMongoServices {
-  static async addUser(name, age, mobile, state) {
-    const userObj = User({ name, age, mobile, state });
+  static async addUser(name, age, mobile, state, password) {
+    const userObj = User({ name, age, mobile, state, password });
     try {
       const response = await userObj.save();
       return response;

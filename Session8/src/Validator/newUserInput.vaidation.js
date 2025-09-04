@@ -7,6 +7,7 @@ const newUserInputValidation = Joi.object().keys({
     .pattern(/^[0-9]{10}$/)
     .required(),
   state: Joi.string().required(),
+  password: Joi.string(),
 });
 
 const isUserInputValid = (input) => {
