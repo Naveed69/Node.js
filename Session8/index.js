@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
 const Homerouter = require("./src/routes/HomeRoutes");
 const ApiRouter = require("./src/routes/ApiRoute");
 port = process.env.PORT || 3000;

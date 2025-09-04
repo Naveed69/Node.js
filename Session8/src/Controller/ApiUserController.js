@@ -10,4 +10,10 @@ const GetUserById = (req, res) => {
   res.status(200).json(user);
 };
 
-module.exports = { AllUsers, GetUserById };
+const GetUserByGender = (req, res) => {
+  const gender = req.query.gender;
+  const user = userData.data.filter((user) => user.gender === gender);
+  res.status(200).json(user);
+};
+
+module.exports = { AllUsers, GetUserById, GetUserByGender };
