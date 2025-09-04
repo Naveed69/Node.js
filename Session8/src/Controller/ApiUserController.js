@@ -8,8 +8,8 @@ const AllUsers = (req, res) => {
 
 const GetUserById = (req, res) => {
   const id = req.params.userId;
-  const user = userData.data.find((user) => user.id === Number(id));
-  if (user) res.status(200).json(user);
+  const response = ApiUserServices.userById(id);
+  if (response) res.status(200).json(response);
   else
     res
       .status(400)
@@ -18,7 +18,7 @@ const GetUserById = (req, res) => {
 
 const GetUserByGender = (req, res) => {
   const gender = req.query.gender;
-  const user = userData.data.filter((user) => user.gender === gender);
+  const user = ApiUserServices.userByGender(gender);
   if (user.length > 0) res.status(200).json(user);
   else
     res.status(400).json({

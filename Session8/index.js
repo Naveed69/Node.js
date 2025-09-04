@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use("/", Homerouter);
 app.use("/api/v1", Authenticate, ApiRouter);
-app.use("/databse/", MongoDbRouter);
+app.use("/databse/", Authenticate, MongoDbRouter);
 
 //MongoDb Connection
 mongoose
