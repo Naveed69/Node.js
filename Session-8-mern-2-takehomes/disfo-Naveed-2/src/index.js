@@ -1,11 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./Routes/user.routes");
+const discussionRouter = require("./Routes/discussion.routes");
 const server = express();
 require("dotenv").config();
 const port = process.env.PORT || 8081;
 server.use(express.json());
 server.use("/", userRouter);
+router.post("/discussions/", discussionRouter);
 
 //MongoDB connection here
 const mongoUrl =

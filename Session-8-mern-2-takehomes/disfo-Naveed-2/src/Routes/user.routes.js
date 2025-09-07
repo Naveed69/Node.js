@@ -13,4 +13,5 @@ const router = express.Router();
 router.post("/user/resgistrtion", userinputValidator, addUser);
 router.get("/user/all", Authorize, getAllusers);
 router.get("/user/:username", getUserByiD);
+
 module.exports = router;
