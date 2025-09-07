@@ -7,7 +7,7 @@ require("dotenv").config();
 const port = process.env.PORT || 8081;
 server.use(express.json());
 server.use("/", userRouter);
-router.post("/discussions/", discussionRouter);
+server.use("/discussions/", discussionRouter);
 
 //MongoDB connection here
 const mongoUrl =
