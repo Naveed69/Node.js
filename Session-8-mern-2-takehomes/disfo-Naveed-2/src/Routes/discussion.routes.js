@@ -1,9 +1,15 @@
 const express = require("express");
-const router = express.Router;
+const {
+  newDiscussion,
+  getAllDiscussion,
+  getDiscussionByUser,
+  getDiscussionById,
+} = require("../Controllers/Discussions.controller");
+const router = express.Router();
 
-router.post("/new");
-router.get("/all1");
-router.get("/user/:username");
-router.get("/id/:id");
+router.post("/new", newDiscussion);
+router.get("/all1", getAllDiscussion);
+router.get("/user/:username", getDiscussionByUser);
+router.get("/id/:id", getDiscussionById);
 
 module.exports = router;
