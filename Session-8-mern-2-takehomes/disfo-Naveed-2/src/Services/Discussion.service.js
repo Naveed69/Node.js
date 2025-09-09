@@ -33,10 +33,12 @@ class DiscussionService {
   }
 
   static async byId(id) {
-    console.log(id);
-    const response = await usermodel.find({ id });
-    console.log(response);
-    return "null";
+    const response = await usermodel.findById(id);
+    const author = response.username;
+    const discussionsList = await discussionmodel.find({ author });
+    if (discussionsList.length > 0) {
+      return discussionsList;
+    } else throw new Error();
   }
 }
 

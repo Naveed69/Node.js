@@ -34,3 +34,17 @@ const getDiscussionByUser = async (req, res) => {
 
 const getDiscussionById = async (req, res) => {
   const id = req.query.id;
+  try {
+    const response = await DiscussionService.byId(id);
+    res.status(200).json(response);
+  } catch (err) {
+    res.status(500).json("Cant find the auther by given Id: ", id);
+  }
+};
+
+module.exports = {
+  newDiscussion,
+  getAllDiscussion,
+  getDiscussionByUser,
+  getDiscussionById,
+};
