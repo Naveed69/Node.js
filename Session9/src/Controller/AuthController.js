@@ -23,9 +23,11 @@ const login = async (req, res) => {
   const { name, password } = body;
   const response = await AuthService.loginService(name, password);
   if (response.isLogged) {
-    res.status(200).json({ message: "LoggedIn Succussfully" });
+    res.status(200).json({ message: "LoggedIn Succussfully", response });
   } else {
-    res.status(403).json({ message: "Try again with diffrent user name/Password" });
+    res
+      .status(403)
+      .json({ message: "Try again with diffrent user name/Password" });
   }
 };
 
