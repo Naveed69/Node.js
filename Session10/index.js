@@ -9,6 +9,8 @@ const port = process.env.PORT || 3000;
 
 app.use("/api/v1/", Authenticate, userApiRouter);
 
+app.use("/api/user");
+
 app.listen(port, () => {
   console.log(`Server Started at port: ${port}`);
 });
