@@ -1,5 +1,5 @@
 const { userdbmodel } = require("../Models/User.model");
-const { encryptPassword } = require("./Auth.Services");
+const { AuthServices } = require("./Auth.Services");
 
 class UserDBServices {
   static async addNewUser(body) {
@@ -9,7 +9,7 @@ class UserDBServices {
       username,
       age,
       email,
-      password: await encryptPassword(password),
+      password: await AuthServices.encryptPassword(password),
     });
     try {
       const response = await userDbObj.save();

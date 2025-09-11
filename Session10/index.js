@@ -1,7 +1,8 @@
 const express = require("express");
 const userApiRouter = require("./src/Routes/UserApi.Routes");
-const Authenticate = require("./src/Middleware/Authentication");
+const { Authenticate } = require("./src/Middleware/Authentication");
 const userDbRouter = require("./src/Routes/UserDB.Routes");
+const AuthRouter = require("./src/Routes/Auth.Routes");
 const { default: mongoose } = require("mongoose");
 const app = express();
 app.use(express.json());
@@ -12,6 +13,8 @@ const port = process.env.PORT || 3000;
 app.use("/api/v1/", Authenticate, userApiRouter);
 
 app.use("/api/user", Authenticate, userDbRouter);
+
+app.use("/api/auth", AuthRouter);
 
 mongoose
   .connect(process.env.MONGODB_URL)
