@@ -21,7 +21,7 @@ class AuthService {
             nationality: "Indian",
           },
           JWT_KEY,
-          { expiresIn: "20000ms" }
+          { expiresIn: "20s" }
         );
       }
       return { isLogged: res, token };
