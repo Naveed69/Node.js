@@ -8,7 +8,6 @@ var options = {
   secretOrKey: JWT_KEY,
 };
 
-
 const jwtStrategy = new JwtStrategy(options, (payload, done) => {
   try {
     console.log("Startergy payload", payload);
