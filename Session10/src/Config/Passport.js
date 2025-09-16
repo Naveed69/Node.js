@@ -1,3 +1,5 @@
+//used in userApiRoutes.js and index.js
+
 const { JWT_KEY } = require("../Middleware/Authentication");
 
 const JwtStrategy = require("passport-jwt").Strategy;

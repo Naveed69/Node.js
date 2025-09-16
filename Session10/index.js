@@ -4,11 +4,16 @@ const { Authenticate } = require("./src/Middleware/Authentication");
 const userDbRouter = require("./src/Routes/UserDB.Routes");
 const AuthRouter = require("./src/Routes/Auth.Routes");
 const { default: mongoose } = require("mongoose");
+const passport = require("passport");
+const configurePassport = require("./src/Config/Passport");
 const app = express();
 app.use(express.json());
 
 require("dotenv").config();
 const port = process.env.PORT || 3000;
+
+//configure passport
+configurePassport(passport);
 
 app.use("/api/v1/", Authenticate, userApiRouter);
 

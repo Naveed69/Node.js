@@ -7,7 +7,7 @@ const fetchAllUsers = () => {
 
 const fetchUserById = (id) => {
   const user = userData.data.find((user) => user.id == id);
-  if (user.length > 0) return user;
+  if (user) return user;
   else throw new Error();
 };
 
