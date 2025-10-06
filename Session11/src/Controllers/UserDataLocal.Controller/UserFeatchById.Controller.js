@@ -2,7 +2,6 @@ const userData = require("../../../userData");
 
 const getUsersById = (req, res) => {
   const id = req.params.id;
-  console.log(id);
   const user = userData.data.find((user) => user.id === Number(id));
   if (user) {
     res.send(user); // Send the user if found
