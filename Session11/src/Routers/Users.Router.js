@@ -7,7 +7,7 @@ const {
 } = require("../Controllers/UserDataLocal.Controller/UserFeatchById.Controller");
 const router = express.Router();
 
-router.get("/", getUsers);
-router.get("/:id", getUsersById);
+router.get("/users", getUsers);
+router.get("/users/:id", getUsersById);
 
 module.exports = router;
