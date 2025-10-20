@@ -10,9 +10,9 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 const port = process.env.PORT || 3000;
 
-app.use("/", LocaluserAuth, UserRoutes);
-
 app.use("/api/v1/", UserDbRouter);
+
+app.use("/", LocaluserAuth, UserRoutes);
 
 mongoose
   .connect(process.env.MongoDb_URL)
