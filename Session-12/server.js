@@ -12,10 +12,6 @@ const Task = mongoose.model("Task", {
   completed: Boolean,
 });
 
-// app.get("/tasks", async (req, res) => {
-//     res.send("Get all tasks");
-// });
-
 app.post("/tasks", async (req, res) => {
   const task = new Task(req.body);
   await task.save();
